@@ -69,14 +69,15 @@ function buildCharts(sample) {
     let sample_values = result["sample_values"];
 
     // 7. Create the yticks for the bar chart.
-    var topTenValues = sample_values.sort((a, b) => b - a).slice(0, 10).reverse();
+    var topTenValues = sample_values.slice(0, 10).reverse();
     var topTenIds = otu_ids.slice(0, 10).map(id => `OTU ${id}`).reverse();
+    var topTenLabels = otu_labels.slice(0, 10).reverse();
 
     // 8. Create the trace for the bar chart. 
     var barData = [{
       x: topTenValues,
       y: topTenIds,
-      text: otu_labels,
+      text: topTenLabels,
       type: "bar",
       orientation: 'h'
     }];
